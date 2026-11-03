@@ -1,0 +1,138 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic tac toe</title>
+    <style>
+      *{
+    padding: 0%;
+    margin: 0%;
+}
+body {
+    text-align: center;
+    background-color: aquamarine;
+    
+}
+.container {
+     height: 70vh;
+     display: flex;  
+     justify-content: center;
+     align-items: center;
+}
+.game {
+   height: 70vmin;
+   width : 60vmin;
+   display: flex;
+   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap : 1.5vmin;
+}
+.box {
+  height: 18vmin;  
+  width:18vmin;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 0 1rem;
+  font-size: 8vmin;
+  color :darkmagenta;
+  background-color:aliceblue;
+}
+#reset-btn {
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 1rem;
+    font-size: large;
+    border: none;
+    margin-top: 50px;
+    box-shadow: 0 0 1rem;
+}
+.msg-container {
+ height : 10vmin;
+
+} 
+#msg {
+    color :white;
+    font-size: 20px;
+
+} 
+.hide {
+    display: none;
+}
+
+    </style>
+ </head>
+ <body>
+   <div class="msg-container hide">
+      <p id="msg"> Winner  </p>
+      <button id="new-btn">New button</button>  
+   </div>
+    <main>
+        <h1>TIC TAC TOE GAME</h1>
+        <div class="container">
+         <div class ="game">
+            <button class="box"></button>
+             <button class="box"></button>
+              <button class="box"></button>
+               <button class="box"></button>
+                <button class="box"></button>
+                 <button class="box"></button>
+                  <button class="box"></button>
+                   <button class="box"></button>
+                    <button class="box"></button>
+         </div>
+         </div>
+      <button id="reset-btn">Reset</button>
+    </main>
+    <script> let a = document.querySelectorAll(".box");
+ let b = document.querySelector(".restart-btn");
+  let c = document.querySelector("#new-btn");
+  let d = document.querySelector(".msg-container");
+  let e = document.querySelector("#msg");
+
+ let turn0 = true;
+ let patterns =[[0,1,2],
+ [0,3,6],
+ [0,4,8],
+ [1,4,7],
+ [2,5,8],
+ [3,4,5],
+ [2,4,6],
+ [6,7,8]];
+
+ a.forEach((box) => {
+    box.addEventListener("click", () => {
+        console.log("box was clicked");
+        if (turn0){
+            box.innerText = "O";
+            turn0 = false;
+        }
+        else {
+            box.innerText ="X";
+            turn0 = true;
+        }
+       box.disabled = true;
+ });
+ });
+   let ShowWinner = (Winner)=> {
+    msg.Winner("congralutions , Winner is ", Winner);
+     msg-container.classList.remove("hide");
+  };
+
+ let  Checkwinner = () => {
+    let p1,p2,p3;
+    for(let pattern in patterns){
+        p1 = a[pattern[0]].innerText;
+        p2 = a[pattern[1]].innerText;
+        p3 = a[pattern[2]].innerText;
+    }
+    if(p1!="" && p2!="" && p3!=""){
+        if(p1===p2 && p2===p3){
+             console.log("Winner", p1);
+             ShowWinner(p1);
+        }
+       }
+ }; </script>
+ </body>
+ </html>
